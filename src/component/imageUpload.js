@@ -22,7 +22,7 @@ function ImageUpload({ username }) {
             }, () => {
                 uploadTask.snapshot.ref.getDownloadURL()
                     .then(downloadURL => {
-                        console.log(downloadURL);
+                        console.log(username);
                         db.collection("posts").add({
                             timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
                             caption: caption,
@@ -46,7 +46,7 @@ function ImageUpload({ username }) {
     };
     return (
         <div>
-            <h4>Upload Image</h4>
+            <h4>Upload Image-{username}</h4>
             <input type="text" placeholder="enter caption" value={caption} onChange={(e) => setCaption(e.target.value)}></input>
             <input type="file" onChange={handleChange}></input>
             <button onClick={handleUpload}> Upload</button>

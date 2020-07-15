@@ -46,13 +46,16 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snap => {
-      setPosts(snap.docs.map(doc => ({
-        id: doc.id,
-        post: doc.data()
+    db
+      .collection('posts')
+      .orderBy('timeStamp', 'desc')
+      .onSnapshot(snap => {
+        setPosts(snap.docs.map(doc => ({
+          id: doc.id,
+          post: doc.data()
+        })
+        ))
       })
-      ))
-    })
   }, []);
 
   const logout = (event) => {
@@ -63,9 +66,11 @@ function App() {
     event.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        return authUser.user.updateProfile({
-          displayName: username
-        });
+        setUser(authUser);
+        return authUser.user.updateProfile(
+          {
+            displayName: username
+          });
       })
       .catch(function (error) {
         alert(error.message);
@@ -153,7 +158,7 @@ function App() {
 
       {
         posts.map(({ id, post }) => (
-          <Post userName={post.userName} key={id} postId={id}
+          <Post userName={post.userName} key={id} postId={id} user={user}
             imageUrl={post.imageUrl} logoUrl={post.logoUrl}
             caption={post.caption} ></Post>
         ))
