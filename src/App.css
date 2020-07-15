@@ -1,4 +1,52 @@
-.App {
+*{
+  margin: 0;
+}
+.display__Flex{
+  display: flex;
+}
+.margin__right{
+  margin-right: 10px;
+}
+.padding___15{
+  padding: 15px;
+}
+.padding___5{
+  padding: 5px 0px 5px 15px  ;
+}
+.aling__centre{
+  align-items: center;
+}
+
+
+
+
+.app__header{
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 20px;
+  border-bottom: 1px solid #80808047;
+}
+.app {
+ background-color: #fafafa;
+ height: 100%;
+}
+.post{
+  border: 1px solid lightgray;
+  margin-bottom: 30px;
+}
+.post___image{
+  max-width: 450px;
+  height: 450px;
+  object-fit: contain;
+}
+.post___logo{
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +83,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
