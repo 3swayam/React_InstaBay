@@ -10,6 +10,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
 import ImageUpload from './component/imageUpload';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -90,7 +93,7 @@ function App() {
 
   return (
     <div className="app">
-      {user ? <ImageUpload username={user.displayName} /> : <h5>Login to upload</h5>}
+
       <div>
         <Modal
           className={classes.modal}
@@ -142,21 +145,23 @@ function App() {
           </Fade>
         </Modal>
       </div>
-      <div className="app__header"><h4 style={{ marginTop: '10px' }}>InstaBay</h4>
-        {user ? (<div className="display__Flex"><h4 style={{ margin: '5px' }}>Welcome {user.displayName}</h4>
-          <Button variant="contained" color="primary" onClick={logout}>Logout</Button></div>) : (
-            <div>
-              <Button variant="contained" color="primary" style={{ margin: '5px' }} onClick={() => {
-                setOpen(true)
-              }}>Sign Up</Button>
-              <Button variant="contained" color="primary" onClick={() => {
-                setOpenSignIn(true)
-              }}>Sign In</Button>
-            </div>
+      <AppBar>
+        <Toolbar style={{ backgroundColor: '#71b6df', justifyContent: 'space-between' }}>
+          <h4 style={{ marginTop: '10px' }}>InstaBay</h4>
+          {user ? (<div className="display__Flex"><h4 style={{ margin: '5px' }}>Welcome {user.displayName}</h4>
+            <Button variant="contained" color="primary" onClick={logout}>Logout</Button></div>) : (
+              <div>
+                <Button variant="contained" color="primary" style={{ margin: '5px' }} onClick={() => {
+                  setOpen(true)
+                }}>Sign Up</Button>
+                <Button variant="contained" color="primary" onClick={() => {
+                  setOpenSignIn(true)
+                }}>Sign In</Button>
+              </div>
 
-          )}
+            )}
 
-      </div>
+        </Toolbar></AppBar>
 
       {
         posts.map(({ id, post }) => (
@@ -165,7 +170,9 @@ function App() {
             caption={post.caption} ></Post>
         ))
       }
-
+      <div className="footer">
+        {user ? <ImageUpload username={user.displayName} /> : <h5>Login to upload</h5>}
+      </div>
     </div >
   );
 }

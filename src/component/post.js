@@ -53,7 +53,7 @@ function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
             </div>
             <div className="display__Flex padding___15">
                 <img src={imageUrl} alt="logo" />
-                <div className=" padding___15">
+                <div className=" padding___15 comment__Section">
                     <div className="display__Flex margin__bottom">
                         <h3 className="margin__right">{userName}:</h3>
                         <p>{caption}</p>
@@ -74,11 +74,7 @@ function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
 
                     </div> : <span></span>}
                 </div>
-
-
             </div>
-
-
         </div>
     )
 }
