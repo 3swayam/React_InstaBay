@@ -113,7 +113,7 @@ function App() {
               <div><form className={classes.root} noValidate autoComplete="off">
                 <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <TextField label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <TextField label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <TextField type="password" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button variant="contained" color="primary" onClick={signUp}>Sign Up</Button>
               </form></div>
             </div>
