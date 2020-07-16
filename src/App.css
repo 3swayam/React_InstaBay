@@ -7,6 +7,12 @@
 .margin__right{
   margin-right: 10px;
 }
+.margin__top{
+  margin-top: 10px;
+}
+.margin__bottom{
+  margin-bottom: 10px;}
+
 .padding___15{
   padding: 15px;
 }
@@ -16,15 +22,23 @@
 .aling__centre{
   align-items: center;
 }
+.inpu_style{
+  height: 30px;
+  width: 250px;
+  margin-right: 10px;
+}
 
 
 
 
 .app__header{
+  display: flex;
+  justify-content: space-between;
   object-fit: contain;
   background-color: #ffffff;
-  padding: 20px;
-  border-bottom: 1px solid #80808047;
+  padding: 15px;
+  border: 1px solid #aeaeae;
+  margin-bottom: 15px;
 }
 .app {
  background-color: #fafafa;

@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+
   root: {
     '& > *': {
       margin: theme.spacing(1),
@@ -104,13 +105,13 @@ function App() {
         >
           <Fade in={open}>
             <div className={classes.paper}>
-              InstaBay
-          <form className={classes.root} noValidate autoComplete="off">
+              <div>InstaBay</div>
+              <div><form className={classes.root} noValidate autoComplete="off">
                 <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <TextField label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <TextField label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button variant="contained" color="primary" onClick={signUp}>Sign Up</Button>
-              </form>
+              </form></div>
             </div>
           </Fade>
         </Modal>
@@ -128,7 +129,7 @@ function App() {
           }}
         >
           <Fade in={openSignIn}>
-            <div className={classes.paper}>
+            <div className={classes.paper} >
               InstaBay
           <form className={classes.root} noValidate autoComplete="off">
                 <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -140,19 +141,19 @@ function App() {
           </Fade>
         </Modal>
       </div>
-      <div className="app__header">InstaBay
-      {user ? (<Button variant="contained" color="primary" onClick={logout}>Logout</Button>) : (
+      <div className="app__header"><h4 style={{ marginTop: '10px' }}>InstaBay</h4>
+        {user ? (<div className="display__Flex"><h4 style={{ margin: '5px' }}>Welcome {user.displayName}</h4>
+          <Button variant="contained" color="primary" onClick={logout}>Logout</Button></div>) : (
+            <div>
+              <Button variant="contained" color="primary" style={{ margin: '5px' }} onClick={() => {
+                setOpen(true)
+              }}>Sign Up</Button>
+              <Button variant="contained" color="primary" onClick={() => {
+                setOpenSignIn(true)
+              }}>Sign In</Button>
+            </div>
 
-          <div>
-            <Button variant="contained" color="primary" onClick={() => {
-              setOpen(true)
-            }}>Sign Up</Button>
-            <Button variant="contained" color="primary" onClick={() => {
-              setOpenSignIn(true)
-            }}>Sign In</Button>
-          </div>
-
-        )}
+          )}
 
       </div>
 

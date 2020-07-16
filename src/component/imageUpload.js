@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { db, storage } from '../firebase';
 import firebase from 'firebase';
+import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
 
 function ImageUpload({ username }) {
     const [caption, setCaption] = useState('');
@@ -45,11 +47,10 @@ function ImageUpload({ username }) {
         )
     };
     return (
-        <div>
-            <h4>Upload Image-{username}</h4>
-            <input type="text" placeholder="enter caption" value={caption} onChange={(e) => setCaption(e.target.value)}></input>
+        <div className="margin__top margin__bottom">
+            <input className="inpu_style" type="text" label="Enter Caption" variant="outlined" value={caption} onChange={(e) => setCaption(e.target.value)} />
             <input type="file" onChange={handleChange}></input>
-            <button onClick={handleUpload}> Upload</button>
+            <Button variant="contained" color="primary" onClick={handleUpload}>Upload</Button>
         </div>
     )
 }
