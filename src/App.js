@@ -45,6 +45,8 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (authUser) {
+      console.log("onAuthStateChanged")
+      console.log(authUser)
       authUser ? setUser(authUser) : setUser(null);
     });
   }, [user, username]);
@@ -68,10 +70,13 @@ function App() {
   }
 
   const signUp = (event) => {
+    console.log("signUp")
     event.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
         setUser(authUser);
+        console.log("createUserWithEmailAndPassword")
+        console.log(authUser)
         return authUser.user.updateProfile(
           {
             displayName: username
@@ -137,7 +142,7 @@ function App() {
               InstaBay
           <form className={classes.root} noValidate autoComplete="off">
                 <TextField label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <TextField label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <TextField type="password" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button variant="contained" color="primary" onClick={signIn}>Sign In</Button>
 
               </form>
@@ -171,7 +176,7 @@ function App() {
         ))
       }
       <div className="footer">
-        {user ? <ImageUpload username={user.displayName} /> : <h5>Login to upload</h5>}
+        {user ? <ImageUpload user={user} /> : <h5>Login to upload</h5>}
       </div>
     </div >
   );

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { db } from '../firebase';
 import firebase from 'firebase';
-import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
 
 function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
@@ -27,6 +26,8 @@ function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
     useEffect(() => {
         if (user) {
             setCommentFlag(true);
+        } else {
+            setCommentFlag(false);
         }
     }, [user]);
 
