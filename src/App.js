@@ -45,8 +45,6 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (authUser) {
-      console.log("onAuthStateChanged")
-      console.log(authUser)
       authUser ? setUser(authUser) : setUser(null);
     });
   }, [user, username]);
@@ -70,13 +68,10 @@ function App() {
   }
 
   const signUp = (event) => {
-    console.log("signUp")
     event.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
         setUser(authUser);
-        console.log("createUserWithEmailAndPassword")
-        console.log(authUser)
         return authUser.user.updateProfile(
           {
             displayName: username
