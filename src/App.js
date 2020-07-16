@@ -61,6 +61,7 @@ function App() {
 
   const logout = (event) => {
     auth.signOut();
+    setUser(null);
   }
 
   const signUp = (event) => {

@@ -15,7 +15,7 @@ function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
                 .collection('posts')
                 .doc(postId)
                 .collection("comments")
-                .orderBy('timeStamp', 'desc')
+                .orderBy('timeStamp', 'asc')
                 .onSnapshot(snap => {
                     setComments(snap.docs.map(doc => (doc.data())
                     ))
@@ -51,28 +51,32 @@ function Post({ postId, userName, imageUrl, logoUrl, caption, user }) {
                 ></Avatar>
                 <h3>{userName}</h3>
             </div>
-            <div>
-                <img src={imageUrl} alt="logo" className="post___image" />
-            </div>
-
             <div className="display__Flex padding___15">
-                <h3 className="margin__right">{userName}:</h3>
-                <p>{caption}</p>
-            </div>
-            <div>
-                {comments.map((comment) => (
-                    <p className="display__Flex padding___5">
-                        <h3 className="margin__right">{comment.username}:</h3>
-                        <p>{comment.comment}</p>
-                    </p>
-                ))
-                }
-            </div>
-            {commentFlag ? <div className="margin__bottom">
-                <input className="inpu_style" type="text" label="Password" variant="outlined" value={comment} onChange={(e) => setComment(e.target.value)} />
-                <Button variant="contained" color="primary" onClick={handleComment} >Post</Button>
+                <img src={imageUrl} alt="logo" />
+                <div className=" padding___15">
+                    <div className="display__Flex margin__bottom">
+                        <h3 className="margin__right">{userName}:</h3>
+                        <p>{caption}</p>
+                    </div>
+                    <div>
+                        {comments.map((comment) => (
+                            <div className="display__Flex margin__bottom">
+                                <h3 className="margin__right">{comment.username}:</h3>
+                                <p>{comment.comment}</p>
+                            </div>
 
-            </div> : <span></span>}
+                        ))
+                        }
+                    </div>
+                    {commentFlag ? <div className="margin__bottom">
+                        <input className="inpu_style" type="text" label="Password" variant="outlined" value={comment} onChange={(e) => setComment(e.target.value)} />
+                        <Button variant="contained" color="primary" onClick={handleComment} >Post</Button>
+
+                    </div> : <span></span>}
+                </div>
+
+
+            </div>
 
 
         </div>

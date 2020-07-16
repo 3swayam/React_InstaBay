@@ -27,6 +27,10 @@
   width: 250px;
   margin-right: 10px;
 }
+img{
+  width: 450px;
+    height: 450px;
+}
 
 
 
@@ -49,9 +53,10 @@
   margin-bottom: 30px;
 }
 .post___image{
-  max-width: 450px;
-  height: 450px;
-  object-fit: contain;
+  display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 .post___logo{
   height: 50px;
