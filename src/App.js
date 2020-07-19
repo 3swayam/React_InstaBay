@@ -71,10 +71,12 @@ function App() {
     event.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        setUser(authUser);
-        return authUser.user.updateProfile(
-          {
-            displayName: username
+        authUser.user.updateProfile({ displayName: username })
+          .then(() => {
+            setUser(authUser);
+          })
+          .catch(function (error) {
+            console.log("name is not updated")
           });
       })
       .catch(function (error) {
